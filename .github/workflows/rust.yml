@@ -17,6 +17,7 @@ jobs:
 
       - name: Run cargo update
         run: |
+          cd my_project
           cargo update
 
       - name: Commit Cargo.lock

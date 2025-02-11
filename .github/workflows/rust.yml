@@ -1,0 +1,29 @@
+name: Update Cargo.lock
+on:
+  workflow_dispatch:  
+
+jobs:
+  cargo-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: 1.58  # Specify your Rust version
+
+      - name: Run cargo update
+        run: |
+          cargo update
+
+      - name: Commit Cargo.lock
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: 'sahitiboost'
+          author_email: 'sahiti@boostsecurity.io'
+          message: 'Update Cargo.lock after cargo update'
+          add: 'my_project/Cargo.lock'
+

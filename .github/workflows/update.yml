@@ -1,0 +1,22 @@
+name: "Update Cargo.lock"
+on:
+  workflow_dispatch:  
+
+jobs:
+  update-dependencies:
+    name: Update dependencies and commit Cargo.lock
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Run cargo update
+        run: |
+          cd my_project  
+          cargo update   
+      - name: Commit Cargo.lock
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: 'sahitiboost'  
+          author_email: 'sahiti@boostsecurity.io'  
+          message: 'Update Cargo.lock after cargo update'
+          add: 'my_project/Cargo.lock'  

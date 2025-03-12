@@ -5,5 +5,4 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0"
-openssl = "0.10.0"
-serde-json-wasm = "1.0.0"
+openssl = "=0.10.0"
